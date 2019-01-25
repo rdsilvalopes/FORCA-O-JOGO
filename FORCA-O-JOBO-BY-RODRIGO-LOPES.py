@@ -161,8 +161,6 @@ class Forca(object):
             print(' ░░░░░░░░░░ \033[7;30mVOCÊ PERDEU\033[m ░░░░░░░░░░░')
             print('●▬▬▬▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬▬▬▬●')
             print()
-
-            # print('Game over! Você perdeu')
             print('A palavra era ' + dados.a)  # A final do jogo imprime a palavra escolhida randomicamente
         else:
             return False
@@ -200,7 +198,6 @@ while not dados.fim_de_jogo():  # O jogo continua ser executado até que você G
     print()
     print(' Você tem \033[7;30m 7 \033[m tentativas de', '\033[7;30m', dados.conta_tentativa, '\033[m' ' JOGADAS perdidas')
     dados.status()
-
     dados.perdeu()
     dados.ganhou()
     dados.fim_de_jogo()
