@@ -13,8 +13,8 @@ class Forca(object):
     def __init__(self, a):
         self.a = a
 
-    def escolhapalavra(self):
-        self.a = random.choice(dados.banco_palavras)
+    def escolhapalavra(self):  # Função que escolhe uma palavra aleatória (random.choice) no banco de palavras
+        self.a = random.choice(dados.banco_palavras)  # banco_palavras é uma lista de palavras
         return self.a
 
     def zero(self):
@@ -113,17 +113,20 @@ class Forca(object):
         print('                         | ')
         print('                    _____|_____ ')
 
-    def hide_word(self):
+    def hide_word(self):  # Oculta as LETRAS se elas NÃO existirem na palavra escolhida randomicamente
+
         rtn = ''
         for letra in self.a:
             if letra not in self.palavras_certas:
-                rtn += '-'
+                # Se a letra escolhida NÃO estiver na lista de palavras_certas ele oculta
+                rtn += '-'  # Oculta a letra
             else:
-                rtn += letra
+                rtn += letra  # Mostra a lista
         return rtn
 
     def adivinha_palavra(self, letra):
 
+        # Valida se a Letra está ou não na lista de palavras CERTAS e ERRADAS e adiciona a letra
         if letra in dados.a and letra not in dados.palavras_certas:
             dados.palavras_certas.append(letra)
         elif letra not in dados.a and letra not in dados.palavras_erradas:
@@ -134,17 +137,25 @@ class Forca(object):
         return True
 
     def status(self):
+
+        #  Imprime a função hide_word que vai mostrar a palavra oculta e imprime o tamanho da palavra...
+        #  ... escolhida randomicamente
+
         print('      A Palavra é', dados.hide_word(), 'e contém', len(dados.a), 'Letras.')
         # print()
         # for i in dados.palavras_certas:
         #     # print()
         #     print('Palavras certas', i)
         print()
-        for i in dados.palavras_erradas:
+        for i in dados.palavras_erradas:  # Imprime as palavras erradas
             print('Palavras erradas', i)
         print()
 
     def perdeu(self):
+
+        #  Se o número de tentativas ERRADAS for igual a 7 o jogo encerra.
+        #  Obs.: as Tentativas certas não são contabilizadas (ver função adivinha_palavra)
+
         if dados.conta_tentativa == 7:
             print('●▬▬▬▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬▬▬▬●')
             print(' ░░░░░░░░░░ \033[7;30mVOCÊ PERDEU\033[m ░░░░░░░░░░░')
@@ -152,23 +163,23 @@ class Forca(object):
             print()
 
             # print('Game over! Você perdeu')
-            print('A palavra era ' + dados.a)
+            print('A palavra era ' + dados.a)  # A final do jogo imprime a palavra escolhida randomicamente
         else:
             return False
         return True
 
-    def fim_de_jogo(self):
+    def fim_de_jogo(self):  # Será o Fim do jogo se você ganhar ou perder
+
         return self.ganhou() or self.perdeu()
 
-    def ganhou(self):
+    def ganhou(self):  # Se nenhum caracter '_' estiver oculto da função (hide_word) você ganhou
+
         if '-' not in self.hide_word():
-            # print('Você Ganhou!!!')
-            # print('A palavra é ' + dados.a)
             print('●▬▬▬▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬▬▬▬●')
             print(' ░░░░░░░░░░ \033[7;30mVOCÊ GANHOU!\033[m ░░░░░░░░░░░')
             print('●▬▬▬▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬▬▬▬●')
             print()
-            print('A palavra é ' + dados.a)
+            print('A palavra é ' + dados.a)  # Imprime a palavra escolhida randomicamente
             return True
         return False
 
@@ -178,8 +189,9 @@ dados.escolhapalavra()
 print('\n'*3)
 print('Developed by Rodrigo Lopes\nrdsilvalopes@gmail.com\n')
 dados.zero()
-# while not dados.ganhou():
-while not dados.fim_de_jogo():
+
+
+while not dados.fim_de_jogo():  # O jogo continua ser executado até que você Ganhe ou Perca
 
     print()
     print('●▬▬▬▬▬▬▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬▬▬▬▬▬▬●')
@@ -193,7 +205,7 @@ while not dados.fim_de_jogo():
     dados.ganhou()
     dados.fim_de_jogo()
     print()
-    letra = input('Escolha a Letra: ')
+    letra = input('Escolha a Letra: ').upper()
     print()
     print('\n' * 50)
     dados.adivinha_palavra(letra)
