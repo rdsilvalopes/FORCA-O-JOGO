@@ -1,5 +1,6 @@
 import random
 
+
 class Forca(object):
     # pass
 
@@ -17,7 +18,8 @@ class Forca(object):
         self.a = random.choice(dados.banco_palavras)  # banco_palavras é uma lista de palavras
         return self.a
 
-    def zero(self):
+    @staticmethod
+    def zero():
         print('               o---------o ')
         print('               |         | ')
         print('                         | ')
@@ -29,7 +31,8 @@ class Forca(object):
         print('                         | ')
         print('                    _____|_____ ')
 
-    def cabeca(self):
+    @staticmethod
+    def cabeca():
         print('               o---------o ')
         print('               |         | ')
         print('            -(Õ.Õ)-      | ')
@@ -41,7 +44,8 @@ class Forca(object):
         print('                         | ')
         print('                    _____|_____ ')
 
-    def bracoesq(self):
+    @staticmethod
+    def bracoesq():
         print('               o---------o ')
         print('               |         | ')
         print('            -(Õ.Õ)-      | ')
@@ -53,7 +57,8 @@ class Forca(object):
         print('                         | ')
         print('                    _____|_____ ')
 
-    def bracodir(self):
+    @staticmethod
+    def bracodir():
         print('               o---------o ')
         print('               |         | ')
         print('            -(Õ.Õ)-      | ')
@@ -65,7 +70,8 @@ class Forca(object):
         print('                         | ')
         print('                    _____|_____ ')
 
-    def peito(self):
+    @staticmethod
+    def peito():
         print('               o---------o ')
         print('               |         | ')
         print('            -(Õ.Õ)-      | ')
@@ -77,7 +83,8 @@ class Forca(object):
         print('                         | ')
         print('                    _____|_____ ')
 
-    def barriga(self):
+    @staticmethod
+    def barriga():
         print('               o---------o ')
         print('               |         | ')
         print('            -(Õ.Õ)-      | ')
@@ -89,7 +96,8 @@ class Forca(object):
         print('                         | ')
         print('                    _____|_____ ')
 
-    def pernaesq(self):
+    @staticmethod
+    def pernaesq():
         print('               o---------o ')
         print('               |         | ')
         print('            -(Õ.Õ)-      | ')
@@ -101,7 +109,8 @@ class Forca(object):
         print('                         | ')
         print('                    _____|_____ ')
 
-    def pernadir(self):
+    @staticmethod
+    def pernadir():
         print('               o---------o ')
         print('               |         | ')
         print('            -(Õ.Õ)-      | ')
@@ -136,7 +145,8 @@ class Forca(object):
             return False
         return True
 
-    def status(self):
+    @staticmethod
+    def status():
 
         #  Imprime a função hide_word que vai mostrar a palavra oculta e imprime o tamanho da palavra...
         #  ... escolhida randomicamente
@@ -151,7 +161,8 @@ class Forca(object):
             print('Palavras erradas', i)
         print()
 
-    def perdeu(self):
+    @staticmethod
+    def perdeu():
 
         #  Se o número de tentativas ERRADAS for igual a 7 o jogo encerra.
         #  Obs.: as Tentativas certas não são contabilizadas (ver função adivinha_palavra)
@@ -230,11 +241,6 @@ while not dados.fim_de_jogo():  # O jogo continua ser executado até que você G
         print('\n' * 50)
         dados.pernadir()
 
-
 print()
 print('Palavras certas', dados.palavras_certas)
 print('Palavras erradas', dados.palavras_erradas)
-
-
-
-
